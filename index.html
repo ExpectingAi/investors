@@ -658,56 +658,6 @@ body {
 }
 
 /* CAP TABLE */
-.cap-summary-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-bottom: 22px;
-}
-.cap-summary-card {
-  background: var(--white);
-  border: 1px solid var(--line-soft);
-  border-radius: 12px;
-  padding: 22px 24px;
-  position: relative;
-  overflow: hidden;
-}
-.cap-summary-card.founders { border-top: 4px solid var(--navy); }
-.cap-summary-card.investors { border-top: 4px solid var(--lavender); }
-.cap-summary-card.esop { border-top: 4px solid var(--amber); }
-.cap-summary-label {
-  font-size: 10.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--text-light);
-  margin-bottom: 10px;
-}
-.cap-summary-value {
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: -0.015em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.cap-summary-value .compare {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-light);
-  margin-left: 6px;
-  letter-spacing: 0;
-}
-.cap-summary-meta {
-  display: flex;
-  gap: 14px;
-  margin-top: 10px;
-  font-size: 12px;
-  color: var(--text-soft);
-  font-weight: 500;
-}
-.cap-summary-meta-item strong { color: var(--navy); font-weight: 700; }
-
 .cap-table-wrap {
   overflow-x: auto;
   border-top: 1px solid var(--line-soft);
@@ -752,12 +702,6 @@ body {
   font-weight: 600;
   color: var(--navy);
 }
-.cap-table .shareholder-name.is-founder::before {
-  content: "★";
-  color: var(--amber);
-  margin-right: 6px;
-  font-size: 13px;
-}
 .cap-table td.num {
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -775,19 +719,6 @@ body {
 }
 .cap-table tfoot td.num { text-align: right; font-variant-numeric: tabular-nums; }
 
-.cap-class-pill {
-  display: inline-block;
-  font-size: 9.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 3px 9px;
-  border-radius: 12px;
-}
-.cap-class-pill.founders { background: rgba(29,70,100,0.10); color: var(--navy); }
-.cap-class-pill.investors { background: rgba(148,116,204,0.16); color: #6b4ea8; }
-.cap-class-pill.esop { background: rgba(254,192,6,0.18); color: #a87800; }
-
 .cap-bar {
   width: 100%;
   height: 8px;
@@ -801,13 +732,7 @@ body {
   left: 0; top: 0; bottom: 0;
   border-radius: 4px;
   transition: width 0.4s ease-out;
-}
-.cap-bar-fill.founders { background: linear-gradient(90deg, var(--navy), #2a5a7e); }
-.cap-bar-fill.investors { background: linear-gradient(90deg, var(--lavender), #b394d8); }
-.cap-bar-fill.esop { background: linear-gradient(90deg, var(--amber), #ffd24a); }
-
-@media (max-width: 1000px) {
-  .cap-summary-grid { grid-template-columns: 1fr; }
+  background: linear-gradient(90deg, var(--navy), #2a5a7e);
 }
 
 /* TAB BAR */
@@ -1373,53 +1298,6 @@ body {
     </div>
   </section>
 
-  <!-- CAP TABLE -->
-  <section class="section">
-    <div class="section-header">
-      <h2 class="section-title">Capitalization <em>table</em></h2>
-      <span class="section-meta">Issued/Outstanding · Fully Diluted</span>
-    </div>
-
-    <div class="cap-summary-grid" id="capSummaryGrid"></div>
-
-    <div class="chart-card" style="padding: 0;">
-      <div class="chart-card-header" style="padding: 22px 26px 14px;">
-        <div>
-          <div class="chart-card-title">Shareholder breakdown</div>
-          <div class="chart-card-sub">All 19 shareholders plus the ESOP pool, sorted by Fully Diluted ownership.</div>
-        </div>
-        <div class="chart-legend">
-          <span class="legend-item"><span class="legend-dot" style="background:var(--navy)"></span>Founders</span>
-          <span class="legend-item"><span class="legend-dot" style="background:var(--lavender)"></span>Investors</span>
-          <span class="legend-item"><span class="legend-dot" style="background:var(--amber)"></span>ESOP pool</span>
-        </div>
-      </div>
-      <div class="cap-table-wrap">
-        <table class="cap-table">
-          <thead>
-            <tr>
-              <th style="width: 48px;">#</th>
-              <th>Shareholder</th>
-              <th>Class</th>
-              <th class="num">I/O %</th>
-              <th class="num">FD %</th>
-              <th style="width: 30%;">FD ownership</th>
-            </tr>
-          </thead>
-          <tbody id="capTableBody"></tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3"><strong>Total</strong></td>
-              <td class="num"><strong id="capTotalIO">—</strong></td>
-              <td class="num"><strong id="capTotalFD">—</strong></td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-  </section>
-
   <!-- COMPETITIVE LANDSCAPE -->
   <section class="section">
     <div class="section-header">
@@ -1465,6 +1343,45 @@ body {
           <span class="comp-tag">Faster matching</span>
           <span class="comp-tag">Data-driven</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAP TABLE -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Capitalization <em>table</em></h2>
+      <span class="section-meta">Issued/Outstanding · Fully Diluted</span>
+    </div>
+
+    <div class="chart-card" style="padding: 0;">
+      <div class="chart-card-header" style="padding: 22px 26px 14px;">
+        <div>
+          <div class="chart-card-title">Shareholder breakdown</div>
+          <div class="chart-card-sub">All 19 shareholders plus the ESOP pool, sorted by Fully Diluted ownership.</div>
+        </div>
+      </div>
+      <div class="cap-table-wrap">
+        <table class="cap-table">
+          <thead>
+            <tr>
+              <th style="width: 48px;">#</th>
+              <th>Shareholder</th>
+              <th class="num">I/O %</th>
+              <th class="num">FD %</th>
+              <th style="width: 30%;">FD ownership</th>
+            </tr>
+          </thead>
+          <tbody id="capTableBody"></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2"><strong>Total</strong></td>
+              <td class="num"><strong id="capTotalIO">—</strong></td>
+              <td class="num"><strong id="capTotalFD">—</strong></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
     </div>
   </section>
@@ -1997,70 +1914,29 @@ const CAP_TABLE = [
 ];
 
 function renderCapTable() {
-  // Compute summary totals
-  const totals = { founders: { io: 0, fd: 0, count: 0 }, investors: { io: 0, fd: 0, count: 0 }, esop: { io: 0, fd: 0, count: 0 } };
-  CAP_TABLE.forEach(row => {
-    totals[row.group].io += row.io;
-    totals[row.group].fd += row.fd;
-    totals[row.group].count += 1;
-  });
-  
-  // Render summary cards
-  const summaryHtml = `
-    <div class="cap-summary-card founders">
-      <div class="cap-summary-label">Founders</div>
-      <div class="cap-summary-value">${totals.founders.fd.toFixed(2)}%<span class="compare">FD</span></div>
-      <div class="cap-summary-meta">
-        <div class="cap-summary-meta-item"><strong>${totals.founders.io.toFixed(2)}%</strong> I/O</div>
-        <div class="cap-summary-meta-item"><strong>${totals.founders.count}</strong> founders</div>
-      </div>
-    </div>
-    <div class="cap-summary-card investors">
-      <div class="cap-summary-label">Investors</div>
-      <div class="cap-summary-value">${totals.investors.fd.toFixed(2)}%<span class="compare">FD</span></div>
-      <div class="cap-summary-meta">
-        <div class="cap-summary-meta-item"><strong>${totals.investors.io.toFixed(2)}%</strong> I/O</div>
-        <div class="cap-summary-meta-item"><strong>${totals.investors.count}</strong> backers</div>
-      </div>
-    </div>
-    <div class="cap-summary-card esop">
-      <div class="cap-summary-label">ESOP pool</div>
-      <div class="cap-summary-value">${totals.esop.fd.toFixed(2)}%<span class="compare">FD</span></div>
-      <div class="cap-summary-meta">
-        <div class="cap-summary-meta-item">Reserved for employees</div>
-      </div>
-    </div>
-  `;
-  document.getElementById('capSummaryGrid').innerHTML = summaryHtml;
-  
-  // Render full table - sort by FD% descending (founders naturally rise to top, ESOP appears mid)
-  // Actually keep ESOP at bottom for clarity, sort the rest by FD
+  // Sort by FD% descending — keep ESOP at bottom for readability
   const sorted = [...CAP_TABLE].sort((a, b) => {
     if (a.group === 'esop') return 1;
     if (b.group === 'esop') return -1;
     return b.fd - a.fd;
   });
   
-  // Find max FD (excluding ESOP) for bar scaling — use largest founder for visual impact
+  // Find max FD for bar scaling
   const maxFd = Math.max(...CAP_TABLE.map(r => r.fd));
   
   const tbody = document.getElementById('capTableBody');
   tbody.innerHTML = sorted.map((row, i) => {
-    const isFounder = row.group === 'founders';
-    const groupCls = row.group;
-    const groupLabel = row.group === 'founders' ? 'Founder' : (row.group === 'esop' ? 'ESOP' : 'Investor');
     const barWidth = (row.fd / maxFd) * 100;
     return `<tr>
       <td class="row-num">${i + 1}</td>
-      <td><span class="shareholder-name${isFounder ? ' is-founder' : ''}">${row.name}</span></td>
-      <td><span class="cap-class-pill ${groupCls}">${groupLabel}</span></td>
+      <td><span class="shareholder-name">${row.name}</span></td>
       <td class="num">${row.io.toFixed(2)}%</td>
       <td class="num">${row.fd.toFixed(2)}%</td>
-      <td><div class="cap-bar"><div class="cap-bar-fill ${groupCls}" style="width: ${barWidth.toFixed(1)}%;"></div></div></td>
+      <td><div class="cap-bar"><div class="cap-bar-fill" style="width: ${barWidth.toFixed(1)}%;"></div></div></td>
     </tr>`;
   }).join('');
   
-  // Footer totals — round to 100% (rounding artifacts in source data sum to 99.96/100.03)
+  // Footer totals — round to 100% (source rounds to 99.96/100.03)
   document.getElementById('capTotalIO').textContent = '100.00%';
   document.getElementById('capTotalFD').textContent = '100.00%';
 }
